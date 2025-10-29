@@ -14,7 +14,7 @@ import {
   
 } from "react-native";
 import b5 from "../assets/b5.jpg";
-import { Link } from "expo-router";
+import { Link,router } from "expo-router";
 
 export default function LogIn() {
 
@@ -30,7 +30,8 @@ function HandleInput(text) {
  setTimeout(()=>{
   setLoading(false);
   Alert.alert('Success', `Welcome ${name}!`)
- },2000)
+  router.push('/products')
+ },1200)
 }
 
   const slideAnim = useRef(new Animated.Value(50)).current;
