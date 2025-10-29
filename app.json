@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "training-native",
-    "slug": "training-native",
+    "name": "Fashion App",
+    "slug": "fashion-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
