@@ -1,5 +1,5 @@
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Animated,
   Easing,
@@ -9,12 +9,30 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Alert,
+  ActivityIndicator
   
 } from "react-native";
 import b5 from "../assets/b5.jpg";
 import { Link } from "expo-router";
 
 export default function LogIn() {
+
+  const [name,setname] = useState('')
+  const [password,setPassword] = useState('')
+  const [loading, setLoading] = useState(false);
+function HandleInput(text) {
+  if (name.trim() === '' || password.trim() === '') {
+     Alert.alert('Error', 'Please enter your infos')
+        return;
+  }
+ setLoading(true)
+ setTimeout(()=>{
+  setLoading(false);
+  Alert.alert('Success', `Welcome ${name}!`)
+ },2000)
+}
+
   const slideAnim = useRef(new Animated.Value(50)).current;
   const opacityAnim = useRef(new Animated.Value(0)).current;
 
@@ -52,18 +70,22 @@ export default function LogIn() {
           <Text style={styles.title}>Log into your Account</Text>
         </View>
 
-        <TextInput
-          placeholder="Your number / Email"
+        <TextInput value={name} onChangeText={setname}
+          placeholder="Your Username / Email"
           placeholderTextColor="#fff"
           style={styles.input}
         />
-        <TextInput
+        <TextInput value={password} onChangeText={setPassword}
           placeholder="Your Password"
           placeholderTextColor="#fff"
-          style={styles.input}
+          style={styles.input} secureTextEntry
         />
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Log In</Text>
+        <TouchableOpacity onPress={HandleInput} style={styles.button}>
+        {loading ? (       
+            <ActivityIndicator size="small" color="#fff" />
+          ) : (
+            <Text style={styles.buttonText}>Log In</Text>
+          )}
         </TouchableOpacity>
         <Text
           style={{

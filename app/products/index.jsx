@@ -1,5 +1,5 @@
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { Image, ImageBackground, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import logo from "../../assets/logo.png";
 import { Link } from "expo-router";
